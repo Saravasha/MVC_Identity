@@ -9,8 +9,8 @@
 {
 	<div class="col">
 
-		<a asp-controller="Language" asp-action="AddLanguage" class="btn btn-primary">Add a Language</a>
-		<a asp-controller="LanguagePerson" asp-action="AddLanguagePerson" class="btn btn-primary">Add a Language to a Person</a>
+		<a asp-controller="Language" asp-action="AddLanguage" class="btn btn-primary btn-sm">Add a Language</a>
+		<a asp-controller="LanguagePerson" asp-action="AddLanguagePerson" class="btn btn-primary btn-sm">Add a Language to a Person</a>
 
 	</div>
 
@@ -32,7 +32,7 @@
 	@foreach (var item in Model)
 	{
 
-		<div class="row">
+		<div class="row m-1">
 			<div class="col">
 				<label asp-for="@item.Id" />@item.Id
 			</div>
@@ -40,7 +40,7 @@
 				<label asp-for="@item.Name" />@item.Name
 			</div>
 			<div class="col">
-				<a asp-controller="Language" asp-action="Delete" class="btn btn-danger  btn-sm" value="Delete" asp-route-id="@item.Id" asp-route-name="@item.Name">Delete</a>
+				<a asp-controller="Language" asp-action="Delete" class="btn btn-danger btn-sm" value="Delete" asp-route-id="@item.Id" asp-route-name="@item.Name">Delete</a>
 
 			</div>
 		</div>

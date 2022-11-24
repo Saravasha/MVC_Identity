@@ -20,11 +20,11 @@
 	<label>Add a new Language</label>
 	<form class="container" method="post" asp-controller="Language" asp-action="AddLanguage">
 		<div class="col">
-			<label asp-for="NewLanguage.Name"></label>
+
 			<input asp-for="NewLanguage.Name" placeholder="Language Name" />
 			<span asp-validation-for="NewLanguage.Name"></span>
 		</div>
-		<button class="btn btn-primary" type="submit">Submit</button>
+		<button class="btn btn-primary btn-sm m-1" type="submit">Submit</button>
 	</form>
 </div>
 

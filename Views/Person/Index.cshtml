@@ -21,13 +21,13 @@
 		<label>Search</label>
 		<br />
 		<input type="text" name="filterInput" required />
-		<button class="btn btn-primary" type="submit">Submit</button>
+		<button class="btn btn-primary btn-sm" type="submit">Submit</button>
 	</form>
 </div>
 
 <div class="row">
 	<label>Add new Person</label>
-	<form class="container" method="post"  asp-controller="Person" asp-action="AddPerson">
+	<form class="container" method="post" asp-controller="Person" asp-action="AddPerson">
 		<div class="col">
 			<label asp-for="NewPerson.Name"></label>
 		</div>
@@ -46,11 +46,11 @@
 			<label asp-for="NewPerson.CityId">City</label>
 		</div>
 		<div class="col">
-			<select type="text" class="col" asp-for="NewPerson.CityId" asp-items="ViewBag.CityNames" required>
-				<option class="col" value="" selected disabled>Select City</option>
+			<select type="text" asp-for="NewPerson.CityId" asp-items="ViewBag.CityNames" required>
+				<option value="" selected disabled>Select City</option>
 			</select>
 			<span asp-validation-for="NewPerson.CityId"></span>
-		<button class="btn btn-primary" type="submit">Submit</button>
+		<button class="btn btn-primary btn-sm" type="submit">Submit</button>
 		</div>
 	</form>
 </div>

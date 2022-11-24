@@ -11,21 +11,19 @@
 	if (TempData.Peek("Message") != null)
 	{
 		<h3>@TempData.Peek("Message")</h3>
-		@TempData.Remove("Message")
-		;
+		@TempData.Remove("Message");
 	}
 }
 
 
-<div class="row">
+<div class="row m-1">
 	<label>Add a new Country</label>
 	<form class="container" method="post" asp-controller="Country" asp-action="AddCountry">
-		<div class="col">
-			<label asp-for="NewCountry.Name"></label>
+		<div class="col m-1">
 			<input asp-for="NewCountry.Name" placeholder="Country Name" />
 			<span asp-validation-for="NewCountry.Name"></span>
 		</div>
-		<button class="btn btn-primary" type="submit">Submit</button>
+		<button class="btn btn-primary btn-sm" type="submit">Submit</button>
 	</form>
 </div>
 
