@@ -1,0 +1,49 @@
+﻿@model CreatePeopleViewModel
+@{
+	string langs = "";
+
+}
+
+
+@if (@Model != null)
+{
+
+	<div class="container">
+
+		@foreach (var item in Model.People)
+
+		{
+
+			<div class="row m-1">
+				<div class="col">
+					<label asp-for="@item.Id" />@item.Id
+				</div>
+				<div class="col">
+					<label asp-for="@item.Name" />@item.Name
+				</div>
+				<div class="col">
+					<label asp-for="@item.PhoneNumber" />@item.PhoneNumber
+				</div>
+				<div class="col">
+					<label asp-for="@item.City.Name" />@item.City.Name
+				</div>
+				<div class="col">
+					<label asp-for="@item.City.Country.Name" />@item.City.Country.Name
+				</div>
+
+				@foreach (var lang in item.Languages) {
+						langs = langs + lang.Name + " ";
+					}
+				<div class="col">
+					<p>
+					@langs
+					</p>
+				</div>
+				@{ langs = ""; }
+				<div class="col">
+					<a asp-action="DeletePerson" class="btn btn-danger btn-sm"  value="Delete" asp-route-id="@item.Id" asp-route-name="@item.Name">Delete</a>
+				</div>					
+			</div>
+		}
+	</div>
+}

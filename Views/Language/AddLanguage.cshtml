@@ -1,0 +1,31 @@
+﻿@model CreateLanguageViewModel
+
+@{
+	ViewData["Title"] = "Add a Language";
+}
+
+
+<h1>@ViewBag.Title</h1>
+
+@{
+	if (TempData.Peek("Message") != null)
+	{
+		<h3>@TempData.Peek("Message")</h3>
+		@TempData.Remove("Message")
+		;
+	}
+}
+
+<div class="row">
+	<label>Add a new Language</label>
+	<form class="container" method="post" asp-controller="Language" asp-action="AddLanguage">
+		<div class="col">
+			<label asp-for="NewLanguage.Name"></label>
+			<input asp-for="NewLanguage.Name" placeholder="Language Name" />
+			<span asp-validation-for="NewLanguage.Name"></span>
+		</div>
+		<button class="btn btn-primary" type="submit">Submit</button>
+	</form>
+</div>
+
+<p>@ViewBag.Statement</p>

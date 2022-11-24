@@ -1,0 +1,38 @@
+﻿@model CreateCityViewModel
+
+@{
+	ViewData["Title"] = "Add a City";
+}
+
+
+<h1>@ViewBag.Title</h1>
+
+@{
+	if (TempData.Peek("Message") != null)
+	{
+		<h3>@TempData.Peek("Message")</h3>
+		@TempData.Remove("Message")
+		;
+	}
+}
+
+<div class="row">
+	<label>Add new City inside a Country</label>
+	<form class="container" method="post" asp-controller="City" asp-action="AddCity">
+		<div class="col">
+			<label asp-for="NewCity.Name"></label>
+			<input asp-for="NewCity.Name" placeholder="City Name" />
+			<span asp-validation-for="NewCity.Name"></span>
+		</div>
+		<div class="form-control">
+			<select asp-for="NewCity.CountryId" asp-items="ViewBag.CountryNames" required>
+				<option value="" selected disabled>Select Country</option>
+			</select>
+			<span asp-validation-for="NewCity.CountryId"></span>
+		</div>
+		<button class="btn btn-primary" type="submit">Submit</button>
+	</form>
+</div>
+
+<p>@ViewBag.Statement</p>
+

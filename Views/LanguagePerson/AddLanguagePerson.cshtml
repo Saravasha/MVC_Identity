@@ -1,0 +1,42 @@
+﻿@model CreatePeopleViewModel
+@{
+	ViewData["Title"] = "LanguagePerson";
+}
+
+<h1>@ViewBag.Title</h1>
+
+
+
+<div class="row">
+	<label>Add new Language to a Person</label>
+	<form class="container" method="post" asp-controller="LanguagePerson" asp-action="AddLanguagePerson">
+		<div class="col">
+			@*<label asp-for="NewPerson.Name"></label>*@
+		</div>
+		<div class="form-control">
+			<select name="personId" class="col" asp-items="ViewBag.PeopleNames" required>
+				<option class="col" value="" selected disabled>Select Person</option>
+			</select>
+			<span asp-validation-for="NewPerson.Name"></span>
+		</div>
+		<div class="form-control">
+			<select name="languages" class="col" asp-items="ViewBag.LanguageNames" multiple>
+				<option class="col" value="" selected disabled>Select Language(s)</option>
+			</select>
+			<span asp-validation-for="NewPerson.Languages"></span>
+		</div>
+		<button class="btn btn-primary" type="submit">Submit</button>
+	</form>
+</div>
+@{
+	if (TempData.Peek("Message") != null)
+	{
+		<strong>
+		@TempData.Peek("Message")
+		</strong>
+		TempData.Remove("Message");
+
+	}
+}
+
+<p>@ViewBag.Statement</p>

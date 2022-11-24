@@ -1,0 +1,57 @@
+﻿@model IEnumerable<City>
+@{
+	ViewData["Title"] = "Cities";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@if (@Model != null)
+{
+	<div class="row">
+		<div class="col">
+
+			<a asp-controller="City" asp-action="AddCity" class="btn btn-primary">Add</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<b>@(Html.DisplayNameFor(model => model.Id))</b>
+		</div>
+		<div class="col">
+			<b>@(Html.DisplayNameFor(model => model.Name))</b>
+		</div>
+		<div class="col">
+			<b>@(Html.DisplayNameFor(model => model.Country))</b>
+		</div>
+		<div class="col">
+			&nbsp;
+		</div>
+	</div>
+
+
+	@foreach (var item in Model)
+
+	{
+
+		<div class="row">
+			<div class="col">
+				<label asp-for="@item.Id" />@item.Id
+			</div>
+			<div class="col">
+				<label asp-for="@item.Name" />@item.Name
+			</div>
+			<div class="col">
+				<label asp-for="@item.Country.Name" />@item.Country.Name
+			</div>
+			<div class="col">
+				<a asp-controller="City" asp-action="Delete" class="btn btn-danger  btn-sm" value="Delete" asp-route-id="@item.Id" asp-route-name="@item.Name">Delete</a>
+			</div>
+		</div>
+	}
+
+}
+else
+{
+	<p>No results found.</p>
+}

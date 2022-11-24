@@ -1,0 +1,26 @@
+﻿@model MVC_Data.ViewModels.CreatePeopleViewModel
+
+@{
+    ViewData["Title"] = "Ajax";
+
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js"></script>
+
+<h1>@ViewBag.Title</h1>
+
+<p>@ViewBag.Statement</p>
+
+<form class="form-control">
+    <input id="inputVal" type="number" placeholder="Give me an ID" required min="0"  />
+    <input type="button" class="btn btn-primary btn-group btn" onclick="GetDetails()" value="Get the Deets" required />
+    <input type="button" onclick="AnnihilatePerson()" class="btn-danger btn-group btn" value="Delete" required />
+</form>
+<br />
+<input type="button" id="People" onclick="ListAllPeople()" class="btn btn-primary form-control" value="People" />
+
+<div id="peopleList"></div>
+
+
+

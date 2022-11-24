@@ -1,0 +1,17 @@
+﻿@model MVC_Data.ViewModels.CreatePeopleViewModel
+
+<p>@ViewBag.Statement</p>
+@if (@Model != null)
+{
+    <div class="border p-5">
+
+    <partial name="_PersonHeaderPartial" model=@Model />
+    <partial name="_PersonBodyPartial" model=@Model />
+    </div>
+
+}
+else
+{
+
+    <p>No results found.</p>
+}
