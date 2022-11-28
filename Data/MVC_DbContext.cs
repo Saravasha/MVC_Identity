@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MVC_Data.Models;
 using MVC_Database.Models;
+using MVC_Identity.Models;
 
 namespace MVC_Database.Data
 {
-    public class MVC_DbContext : DbContext
+    public class MVC_DbContext : IdentityDbContext<ApplicationUser>
     {
         public MVC_DbContext(DbContextOptions<MVC_DbContext> options)
             : base(options)

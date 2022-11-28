@@ -4,23 +4,24 @@ using MVC_Database.Data;
 using MVC_Identity.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("MVC_DbContextConnection") ?? throw new InvalidOperationException("Connection string 'MVC_DbContextConnection' not found.");
 builder.Services.AddMvc();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<MVC_DbContext>(options =>
     options
     .UseSqlServer(builder.Configuration
-    .GetConnectionString("MVC_DatabaseContext") ?? throw new InvalidOperationException("Connection string 'MVC_DatabaseContext' not found.")));
+    .GetConnectionString("MVC_DbContextConnection") ?? throw new InvalidOperationException("Connection string 'MVC_DbContext' not found.")));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MVC_DbContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>().AddEntityFrameworkStores<MVC_DbContext>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
-    options.Password.RequireDigit = true;
-    options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequireLowercase = true;
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = false;
     options.Password.RequiredUniqueChars = 1;
-    options.Password.RequireUppercase = true;
+    options.Password.RequireUppercase = false;
     options.Password.RequiredLength = 6;
 });
 
