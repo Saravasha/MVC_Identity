@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Database.Data;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MVC_Data.ViewModels;
-using Microsoft.EntityFrameworkCore;
-using MVC_Database.Models;
 
-namespace MVC_Database.Controllers
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using MVC_Identity.Models;
+
+namespace MVC_Identity.Data
 {
     public class LanguagePersonController : Controller
     {

@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Data.ViewModels;
-using MVC_Data.Models;
+using MVC_Identity.Models;
 
-
-namespace MVC_Data.Controllers
+namespace MVC_Identity.Controllers
 {
     public class AjaxController : Controller
     {

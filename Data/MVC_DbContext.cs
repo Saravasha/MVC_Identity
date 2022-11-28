@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MVC_Data.Models;
-using MVC_Database.Models;
-using MVC_Identity.Models;
 
-namespace MVC_Database.Data
+using MVC_Identity.Models;
+namespace MVC_Identity.Data
 {
     public class MVC_DbContext : IdentityDbContext<ApplicationUser>
     {
@@ -54,6 +53,44 @@ namespace MVC_Database.Data
                 .HasMany(l => l.Languages)
                 .WithMany(p => p.People)
                 .UsingEntity(j => j.HasData(new { LanguagesId = 3, PeopleId = 3 }));
+
+            string adminRoleId = Guid.NewGuid().ToString();
+            string userRoleId = Guid.NewGuid().ToString();
+            string userId = Guid.NewGuid().ToString();
+
+            modelbuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = adminRoleId,
+                Name = "Admin",
+                NormalizedName = "ADMIN"
+            });
+            modelbuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = userRoleId,
+                Name = "User",
+                NormalizedName = "USER"
+
+            });
+
+            PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
+            modelbuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id = userId,
+                Email = "admin@admin.com",
+                NormalizedEmail = "ADMIN@ADMIN.COM",
+                UserName = "Admin",
+                NormalizedUserName = "ADMIN@ADMIN.COM",
+                FirstName = "Admin",
+                LastName = "Adminson",
+                Age = 29,
+                PasswordHash = passwordHasher.HashPassword(null, "password")
+            });
+
+            modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+               RoleId = adminRoleId,
+               UserId = userId,
+            });
 
         }
     }

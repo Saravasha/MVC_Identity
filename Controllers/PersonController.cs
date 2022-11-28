@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Data.ViewModels;
-using MVC_Data.Models;
-using MVC_Database.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MVC_Identity.Models;
+using MVC_Identity.Data;
 
-namespace MVC_Data.Controllers
+namespace MVC_Identity.Controllers
+
 {
     public class PersonController : Controller
     {

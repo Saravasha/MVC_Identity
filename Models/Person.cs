@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using MVC_Database.Models;
-
-namespace MVC_Data.Models
+﻿
+namespace MVC_Identity.Models
 {
     public class Person
     {

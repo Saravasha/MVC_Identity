@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using MVC_Data.Models;
-using MVC_Database.Models;
-
-namespace MVC_Data.ViewModels
+﻿namespace MVC_Identity.Models
 {
     public class CreateCountryViewModel
     {

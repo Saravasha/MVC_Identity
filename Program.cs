@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MVC_Database.Data;
+using MVC_Identity.Data;
 using MVC_Identity.Models;
 
 var builder = WebApplication.CreateBuilder(args);

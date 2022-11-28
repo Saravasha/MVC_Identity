@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MVC_Data.Models;
-using MVC_Data.ViewModels;
-using MVC_Database.Data;
+using MVC_Identity.Data;
+using MVC_Identity.Models;
 
-namespace MVC_Database.Controllers
+namespace MVC_Identity.Controllers
 {
     public class CityController : Controller
     {

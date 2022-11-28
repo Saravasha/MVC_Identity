@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MVC_Data.Models
+    namespace MVC_Identity.Models
 {
     public class City
     {

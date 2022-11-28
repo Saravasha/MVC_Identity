@@ -1,0 +1,13 @@
+﻿@model IdentityRole
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new Role</h1>
+
+<form asp-action="Create" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <input type="Submit" value="Create" />
+
+</form>

@@ -1,6 +1,4 @@
-﻿using MVC_Database.Models;
-
-namespace MVC_Data.ViewModels
+﻿namespace MVC_Identity.Models
 {
     public class CreateLanguageViewModel
     {

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Data.ViewModels;
-using MVC_Database.Data;
-using MVC_Database.Models;
+using MVC_Identity.Data;
 
-namespace MVC_Database.Controllers
+namespace MVC_Identity.Models
+
 {
     public class LanguageController : Controller
     {

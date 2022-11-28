@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using MVC_Data.Models;
-namespace MVC_Database.Models
+namespace MVC_Identity.Models
 {
     public class Language
     {
