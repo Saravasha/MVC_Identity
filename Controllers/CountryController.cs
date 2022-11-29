@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Microsoft.AspNetCore.Mvc;
 using MVC_Identity.Data;
 using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
+        [Authorize(Roles = "User, Admin")]
     public class CountryController : Controller
     {
-
         //private static CreateCountryViewModel cityViewModel = new CreateCountryViewModel();
         readonly MVC_DbContext _context; // creates a readonly of DbContext
 

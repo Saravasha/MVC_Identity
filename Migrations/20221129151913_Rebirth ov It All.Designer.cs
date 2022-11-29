@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCIdentity.Migrations
 {
     [DbContext(typeof(MVC_DbContext))]
-    [Migration("20221129120054_Rebirth ov It Allw")]
-    partial class RebirthovItAllw
+    [Migration("20221129151913_Rebirth ov It All")]
+    partial class RebirthovItAll
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -135,10 +135,10 @@ namespace MVCIdentity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bc7327a1-70f0-435d-abe5-3a905f97ffaf",
+                            Id = "3d93d5b4-dc56-4fcd-b208-efd2cf089a82",
                             AccessFailedCount = 0,
                             Age = 29,
-                            ConcurrencyStamp = "56a08fcd-5bfa-4a8f-bd36-c7957c0c4177",
+                            ConcurrencyStamp = "17068c8d-efae-47b6-95a6-4071af24e1db",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -146,9 +146,9 @@ namespace MVCIdentity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJpynJ9yYY5EG8WTDEF20XcJhRqPDJD/CCNfdeL+3e6+kQD1q3lbJQ657zi0K1ienQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL8nqCbQF5Rnbv9lds/bhLyNMZk8caUXVvQAlBY0G1xIdq4g5SruULscXezVoTbWoQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d2d78845-eac9-4ba9-afaf-3e367d495745",
+                            SecurityStamp = "002fd44c-cb1b-42e1-bb5a-66ea6e18efe7",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -342,15 +342,15 @@ namespace MVCIdentity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "27dff0eb-8367-48c6-8d5f-51d8e521f60a",
-                            ConcurrencyStamp = "cacb5d66-d701-48d9-83c6-5f0268e7e01c",
+                            Id = "8d1bc749-2a14-4679-b3ed-211d3a783608",
+                            ConcurrencyStamp = "0934a3d1-b0f8-4281-a52a-6d631e7e1906",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d5d559e9-3414-459a-ae20-c70563a9286f",
-                            ConcurrencyStamp = "30a92db9-7bcf-4637-80f5-ea4754ee586a",
+                            Id = "18e4b6fb-48c9-41d2-a285-be7148cc694d",
+                            ConcurrencyStamp = "508554ac-3a11-4343-9e5d-8fb901cf196d",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -447,8 +447,8 @@ namespace MVCIdentity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "bc7327a1-70f0-435d-abe5-3a905f97ffaf",
-                            RoleId = "27dff0eb-8367-48c6-8d5f-51d8e521f60a"
+                            UserId = "3d93d5b4-dc56-4fcd-b208-efd2cf089a82",
+                            RoleId = "8d1bc749-2a14-4679-b3ed-211d3a783608"
                         });
                 });
 

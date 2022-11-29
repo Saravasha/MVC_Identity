@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +8,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Data
 {
+    [Authorize(Roles = "User, Admin")]
     public class LanguagePersonController : Controller
     {
         private static CreatePeopleViewModel peopleViewModel = new CreatePeopleViewModel();

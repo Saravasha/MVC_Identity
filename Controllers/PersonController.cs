@@ -3,10 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Identity.Models;
 using MVC_Identity.Data;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace MVC_Identity.Controllers
 
 {
+    [Authorize(Roles = "User, Admin")]
     public class PersonController : Controller
     {
 
