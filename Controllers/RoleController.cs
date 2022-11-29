@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVC_Identity.Models;
+using MVC_Identity.ViewModels;
 
 namespace MVC_Identity.Controllers
 {
@@ -61,5 +61,28 @@ namespace MVC_Identity.Controllers
         {
             return View(_userManager.Users);
         }
+
+        public async Task<IActionResult> ShowUserRoles(string Id)
+        {
+            UserRoleViewModel vm = new UserRoleViewModel();
+            var user = await _userManager.FindByIdAsync(Id);
+
+            var assignedRoles = new List<string>(await _userManager.GetRolesAsync(user));
+            vm.UserId = Id;
+            vm.UserName = user.UserName;
+            
+            vm.Roles.AddRange(assignedRoles);
+            
+            return View(vm);
+        }
+
+        public async Task<IActionResult> RemoveRoleFromUser(string rolename, string userid)
+        {
+            var user = await _userManager.FindByIdAsync(userid);
+            await _userManager.RemoveFromRoleAsync(user, rolename);
+
+            return RedirectToAction("ShowUserRoles", new { id = userid });
+        }
+
     }
 }

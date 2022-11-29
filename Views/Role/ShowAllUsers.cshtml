@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<ApplicationUser>
 @{
-    ViewData["Title"] = "ShowAllUsers";
+    ViewData["Title"] = "Show All Users";
 }
 
-<h1>ShowAllUsers</h1>
+<h1>Show All Users</h1>
 
 <table class="table">
     <thead>
@@ -31,7 +31,7 @@
             <td>@user.FirstName</td>
             <td>@user.LastName</td>
             <td>
-                <a asp-action="ShowUserRoles" asp-route-id="@user.Id" class="btn-primary">Check Roles</a>
+                <a asp-action="ShowUserRoles" asp-route-id="@user.Id" class="btn btn-primary">Check Roles</a>
             </td>
         </tr>
     }
