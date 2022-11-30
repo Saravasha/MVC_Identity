@@ -102,6 +102,7 @@ namespace MVC_Identity.Areas.Identity.Pages.Account
             public string FirstName { get; set; }
             [Required]
             public string LastName { get; set; }
+            [Required]
             public int Age { get; set; }
         }
 

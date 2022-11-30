@@ -6,7 +6,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
-        [Authorize(Roles = "User, Admin")]
+    [Authorize(Roles = "Admin")]
     public class CountryController : Controller
     {
         //private static CreateCountryViewModel cityViewModel = new CreateCountryViewModel();
@@ -25,7 +25,6 @@ namespace MVC_Identity.Controllers
 
             return View(countryList);
         }
-
         public IActionResult AddCountry()
         {
             
@@ -61,7 +60,7 @@ namespace MVC_Identity.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
         public IActionResult Delete(int id, string name)
         {
             var country = _context.Countries.FirstOrDefault(x => x.Id == id);

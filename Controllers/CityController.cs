@@ -8,7 +8,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
-        [Authorize(Roles = "User, Admin")]
+    [Authorize(Roles = "Admin")]
     public class CityController : Controller
     {
         //private static CreateCityViewModel cityViewModel = new CreateCityViewModel();

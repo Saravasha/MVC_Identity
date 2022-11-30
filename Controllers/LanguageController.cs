@@ -6,7 +6,7 @@ using MVC_Identity.Data;
 namespace MVC_Identity.Models
 
 {
-    [Authorize(Roles = "User, Admin")]
+
     public class LanguageController : Controller
     {
 

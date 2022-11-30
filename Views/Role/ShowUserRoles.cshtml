@@ -9,16 +9,22 @@
     <thead>
         <tr>
             <th>Role Name</th>
+            @if(User.IsInRole("Admin"))
+			{
             <th></th>
+            }
         </tr>
     </thead>
     @foreach(var role in Model.Roles)
     {
     <tr>
         <td>@role</td>
+        	@if(User.IsInRole("Admin"))
+			{
         <td>
             <a asp-action="RemoveRoleFromUser" asp-route-rolename=@role asp-route-userid=@Model.UserId class="btn btn-danger btn-sm">Remove Role from User</a>
         </td>
+            }
     </tr>
     }
 </table>

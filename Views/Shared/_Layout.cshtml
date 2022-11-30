@@ -27,34 +27,47 @@
 						</li>
 						@if (User.IsInRole("User") || User.IsInRole("Admin"))
 						{
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Person" asp-action="Index">People</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Ajax" asp-action="Index">Ajax</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Db" asp-action="Index">Database</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Language" asp-action="Index">Language</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="ShowAllUsers">Show All Users</a>
-						</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Person" asp-action="Index">People</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Ajax" asp-action="Index">Ajax</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Db" asp-action="Index">Database</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Language" asp-action="Index">Language</a>
+							</li>
 						}
-						@if(User.IsInRole("Admin"))
+						@if (User.IsInRole("Admin"))
 						{
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="City" asp-action="Index">Cities</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="Index">Countries</a>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="City" asp-action="Index">Cities</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="Index">Countries
+								</a>
+							</li>
+						}
+						@if (User.Identity.IsAuthenticated)
+						{
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Identity</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item">
+									<a class="dropdown-item text-dark" asp-area="" asp-controller="Role" asp-action="ShowAllUsers">Show All Users
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="dropdown-item dropdown-item text-dark" asp-area="" asp-controller="Role" asp-action="Index">Show All Roles</a>
+								</li>
+							</ul>
 						</li>
 						}
+
+
+
 					</ul>
 					<partial name="_LoginPartial" />
 				</div>

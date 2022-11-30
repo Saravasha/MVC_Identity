@@ -8,7 +8,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Data
 {
-    [Authorize(Roles = "User, Admin")]
+
     public class LanguagePersonController : Controller
     {
         private static CreatePeopleViewModel peopleViewModel = new CreatePeopleViewModel();

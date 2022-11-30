@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Identity.Client;
 using MVC_Identity.Models;
 using MVC_Identity.ViewModels;
 
 namespace MVC_Identity.Controllers
 {
-    [Authorize(Roles = "Admin")]
+
     public class RoleController : Controller
     {
         readonly RoleManager<IdentityRole> _roleManager;
@@ -35,11 +36,26 @@ namespace MVC_Identity.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             IdentityRole role = await _roleManager.FindByIdAsync(id);
             await _roleManager.DeleteAsync(role);
             return RedirectToAction("Index");
+
+            
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var userToDelete = await _userManager.FindByIdAsync(id);
+
+            if (userToDelete != null)
+            {
+                await _userManager.DeleteAsync(userToDelete);
+            }
+            return RedirectToAction("ShowAllUsers");
         }
 
         public IActionResult AddUserToRole()
@@ -69,13 +85,12 @@ namespace MVC_Identity.Controllers
 
             var assignedRoles = new List<string>(await _userManager.GetRolesAsync(user));
             vm.UserId = Id;
-            vm.UserName = user.UserName;
-            
+            vm.UserName = $"{user.FirstName} {user.LastName}";
             vm.Roles.AddRange(assignedRoles);
             
             return View(vm);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveRoleFromUser(string rolename, string userid)
         {
             var user = await _userManager.FindByIdAsync(userid);

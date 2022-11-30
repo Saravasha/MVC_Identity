@@ -5,7 +5,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
-    [Authorize(Roles = "User, Admin")]
+
     public class AjaxController : Controller
     {
         public static CreatePeopleViewModel person = new CreatePeopleViewModel();

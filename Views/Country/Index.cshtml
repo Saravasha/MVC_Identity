@@ -28,9 +28,12 @@
 				@(Html.DisplayNameFor(model => model.Name))
 			</b>
 		</div>
+			@if(User.IsInRole("Admin"))
+			{
 		<div class="col">
 			&nbsp;
 		</div>
+			}
 	</div>
 
 
@@ -46,9 +49,12 @@
 			<div class="col">
 				<label asp-for="@item.Name" />@item.Name
 			</div>
+			@if(User.IsInRole("Admin"))
+			{
 			<div class="col">
 				<a asp-controller="Country" asp-action="Delete" class="btn btn-danger btn-sm" value="Delete" asp-route-id="@item.Id" asp-route-name="@item.Name">Delete</a>
 			</div>
+			}
 		</div>
 	}
 

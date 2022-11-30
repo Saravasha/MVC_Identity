@@ -9,7 +9,6 @@ using System.Data;
 namespace MVC_Identity.Controllers
 
 {
-    [Authorize(Roles = "User, Admin")]
     public class PersonController : Controller
     {
 

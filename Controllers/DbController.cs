@@ -7,7 +7,7 @@ using MVC_Identity.Models;
 
 namespace MVC_Identity.Controllers
 {
-    [Authorize(Roles = "User, Admin")]
+    
     public class DbController : Controller
     {
         private readonly MVC_DbContext _context;
