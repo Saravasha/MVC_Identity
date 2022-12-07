@@ -15,6 +15,12 @@ builder.Services.AddDbContext<MVC_DbContext>(options =>
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>().AddEntityFrameworkStores<MVC_DbContext>();
 
+builder.Services.AddCors(p => p.AddPolicy("corsPolicy", builder => {
+    builder.WithOrigins("http://localhost:3000")
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+}));
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = false;
@@ -44,7 +50,7 @@ var app = builder.Build();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseCors("corsPolicy");
 
 app.UseHttpsRedirection();
 
