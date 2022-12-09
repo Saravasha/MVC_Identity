@@ -22,6 +22,13 @@ namespace MVC_Identity.Controllers
             return people;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetPeople(int id)
+        {
+            var people = _context.People.Find(id);
+            return (IActionResult) people;
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
