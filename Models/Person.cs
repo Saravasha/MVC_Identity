@@ -1,9 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace MVC_Identity.Models
 {
     public class Person
     {
-        
+        //[DatabaseGenerated]
         public int Id { get; set; }
         
         public string Name { get; set; }

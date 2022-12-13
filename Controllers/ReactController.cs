@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Identity.Data;
 using MVC_Identity.Models;
+using Newtonsoft.Json;
 
 namespace MVC_Identity.Controllers
 {
@@ -25,8 +28,23 @@ namespace MVC_Identity.Controllers
         [HttpGet("{id}")]
         public IActionResult GetPeople(int id)
         {
-            var people = _context.People.Find(id);
-            return (IActionResult) people;
+            var person = _context.People.Find(id);
+            return (IActionResult) person;
+        }
+
+        [HttpPost("create")]
+        public IActionResult Create(JsonObject person)
+        {
+            string jsonPerson = person.ToString();
+            Person personToCreate = JsonConvert.DeserializeObject<Person>(jsonPerson);
+
+            if(personToCreate != null)
+            {
+                _context.People.Add(personToCreate);
+                _context.SaveChanges();
+                return StatusCode(200);
+            }
+            return StatusCode(404);
         }
 
         [HttpDelete("{id}")]
