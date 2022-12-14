@@ -2,6 +2,7 @@
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Identity.Data;
 using MVC_Identity.Models;
 using Newtonsoft.Json;
@@ -17,6 +18,21 @@ namespace MVC_Identity.Controllers
         {
             _context = context;
         }
+
+        //[HttpGet]
+        //public List<Person> GetCities()
+        //{
+        //    List<City> cities = new List<City>();
+        //    cities = _context.Cities.ToList();
+        //    return cities;
+        //}
+
+        public SelectList GetCities()
+        {
+            var cityList = new SelectList(_context.Cities, "Id", "Name");
+            return cityList;
+        }
+
         [HttpGet]
         public List<Person> GetPeople()
         {
@@ -38,7 +54,7 @@ namespace MVC_Identity.Controllers
             string jsonPerson = person.ToString();
             Person personToCreate = JsonConvert.DeserializeObject<Person>(jsonPerson);
 
-            if(personToCreate != null)
+            if (personToCreate != null)
             {
                 _context.People.Add(personToCreate);
                 _context.SaveChanges();
