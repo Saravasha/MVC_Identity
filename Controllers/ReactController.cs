@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Identity.Data;
 using MVC_Identity.Models;
 using Newtonsoft.Json;
+using System.Text.Json.Nodes;
 
 namespace MVC_Identity.Controllers
 {
@@ -27,6 +27,7 @@ namespace MVC_Identity.Controllers
         //    return cities;
         //}
 
+        [HttpGet("create")]
         public SelectList GetCities()
         {
             var cityList = new SelectList(_context.Cities, "Id", "Name");
@@ -48,21 +49,6 @@ namespace MVC_Identity.Controllers
             return (IActionResult) person;
         }
 
-        [HttpPost("create")]
-        public IActionResult Create(JsonObject person)
-        {
-            string jsonPerson = person.ToString();
-            Person personToCreate = JsonConvert.DeserializeObject<Person>(jsonPerson);
-
-            if (personToCreate != null)
-            {
-                _context.People.Add(personToCreate);
-                _context.SaveChanges();
-                return StatusCode(200);
-            }
-            return StatusCode(404);
-        }
-
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -75,5 +61,22 @@ namespace MVC_Identity.Controllers
             }
             return StatusCode(404);
         }
+
+        [HttpPost("create")]
+        public IActionResult Create(JsonObject person)
+        {
+            string jsonPerson = person.ToString();
+            Person personToCreate = JsonConvert.DeserializeObject<Person>(jsonPerson);
+
+            if (personToCreate != null)
+            {
+                _context.People.Add(personToCreate);
+                _context.SaveChanges();
+
+                return StatusCode(200);
+            }
+            return StatusCode(404);
+        }
+
     }
 }
