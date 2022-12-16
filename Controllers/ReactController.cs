@@ -42,11 +42,11 @@ namespace MVC_Identity.Controllers
             return people;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("persondetails")]
         public IActionResult GetPeople(int id)
         {
             var person = _context.People.Find(id);
-            return (IActionResult) person;
+            return person as IActionResult;
         }
 
         [HttpDelete("{id}")]
