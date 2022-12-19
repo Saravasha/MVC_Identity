@@ -19,22 +19,22 @@ namespace MVC_Identity.Controllers
             _context = context;
         }
 
-        //[HttpGet]
-        //public List<Person> GetCities()
-        //{
-        //    List<City> cities = new List<City>();
-        //    cities = _context.Cities.ToList();
-        //    return cities;
-        //}
+        [HttpGet]
+        public List<City> GetCities()
+        {
+            List<City> cities = new List<City>();
+            cities = _context.Cities.ToList();
+            return cities;
+        }
 
         [HttpGet("create")]
-        public SelectList GetCities()
+        public SelectList GetCities(int id)
         {
             var cityList = new SelectList(_context.Cities, "Id", "Name");
             return cityList;
         }
 
-        [HttpGet]
+        [HttpGet("person")]
         public List<Person> GetPeople()
         {
             List<Person> people = new List<Person>();
@@ -42,12 +42,12 @@ namespace MVC_Identity.Controllers
             return people;
         }
 
-        [HttpGet("persondetails")]
-        public IActionResult GetPeople(int id)
-        {
-            var person = _context.People.Find(id);
-            return person as IActionResult;
-        }
+        //[HttpGet("persondetails")]
+        //public IActionResult GetPeople(int id)
+        //{
+        //    var person = _context.People.Find(id);
+        //    return person as IActionResult;
+        //}
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
