@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MVC_Identity.Data;
 using MVC_Identity.Models;
 using Newtonsoft.Json;
@@ -19,13 +20,13 @@ namespace MVC_Identity.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public List<City> GetCities()
-        {
-            List<City> cities = new List<City>();
-            cities = _context.Cities.ToList();
-            return cities;
-        }
+        //[HttpGet]
+        //public List<City> GetCities()
+        //{
+        //    List<City> cities = new List<City>();
+        //    cities = _context.Cities.ToList();
+        //    return cities;
+        //}
 
         [HttpGet("create")]
         public SelectList GetCities(int id)
@@ -34,11 +35,28 @@ namespace MVC_Identity.Controllers
             return cityList;
         }
 
+        //[HttpGet]
+        //public List<Person> Getppl()
+        //{
+        //    List<Person> people = new List<Person>();
+        //    people = _context.People.Include(c => c.City).ToList();
+        //    return people;
+        //}
+
+        [HttpGet]
+        public List<Person> GetCityPeople(int id)
+        {
+            var people = new List<Person>();
+
+            people = _context.People.Include(c => c.City).ToList();
+            return people;
+        }
+
         [HttpGet("person")]
         public List<Person> GetPeople()
         {
             List<Person> people = new List<Person>();
-            people = _context.People.ToList();
+            people = _context.People.Include(c=>c.City).ToList();
             return people;
         }
 
