@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
-    namespace MVC_Identity.Models
+namespace MVC_Identity.Models
 {
     public class City
     {
+
 
         [Key]
         public int Id { get; set; }
@@ -12,7 +14,9 @@
         public int CountryId { get; set; }
 
         public Country Country { get; set; }
-        public List<Person> CityPeople { get; set; } = new List<Person>();
+
+        public List<Person> People { get; set; } = new List<Person>();
+       
 
     }
 }

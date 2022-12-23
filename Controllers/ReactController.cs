@@ -56,7 +56,7 @@ namespace MVC_Identity.Controllers
         public List<Person> GetPeople()
         {
             List<Person> people = new List<Person>();
-            people = _context.People.ToList();
+            people = _context.People.Include(c => c.City).ThenInclude(C => C.Country).ToList();
             return people;
         }
 

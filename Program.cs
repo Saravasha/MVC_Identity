@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVC_Identity.Data;
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("MVC_DbContextConnection") ?? throw new InvalidOperationException("Connection string 'MVC_DbContextConnection' not found.");
 builder.Services.AddMvc();
 builder.Services.AddRazorPages();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddDbContext<MVC_DbContext>(options =>
     options
