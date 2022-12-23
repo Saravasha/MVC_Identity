@@ -43,20 +43,20 @@ namespace MVC_Identity.Controllers
         //    return people;
         //}
 
-        [HttpGet]
-        public List<Person> GetCityPeople(int id)
-        {
-            var people = new List<Person>();
+        //[HttpGet("personcity")]
+        //public List<Person> GetCityPeople(int id)
+        //{
+        //    var people = new List<Person>();
 
-            people = _context.People.Include(c => c.City).ToList();
-            return people;
-        }
+        //    people = _context.People.Include(c => c.City).ToList();
+        //    return people;
+        //}
 
         [HttpGet("person")]
         public List<Person> GetPeople()
         {
             List<Person> people = new List<Person>();
-            people = _context.People.Include(c=>c.City).ToList();
+            people = _context.People.ToList();
             return people;
         }
 

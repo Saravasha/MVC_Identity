@@ -12,7 +12,7 @@
         public int CountryId { get; set; }
 
         public Country Country { get; set; }
-        public List<Person> People { get; set; } = new List<Person>();
+        public List<Person> CityPeople { get; set; } = new List<Person>();
 
     }
 }
